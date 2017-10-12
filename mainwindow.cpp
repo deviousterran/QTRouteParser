@@ -20,11 +20,12 @@ void MainWindow::buttonPushed()
     query = "INSERT INTO test(id,name) VALUES(2,\"ANDREw Demerast\")";
     qDebug() << query;
     db->insertData(query);
-
-
     delete db;
 
+    excelparser *parse;
 
+
+    parse->testRead();
 
 
 }

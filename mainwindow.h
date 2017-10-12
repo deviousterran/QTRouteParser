@@ -7,6 +7,8 @@
 #include "csvimporter.h"
 #include <QProcess>
 #include <QStringList>
+#include "excelparser.h"
+
 
 namespace Ui {
 class MainWindow;

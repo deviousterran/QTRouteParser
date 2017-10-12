@@ -42,6 +42,7 @@ bool DBManager::insertData(QString queryString){
     query.prepare(queryString);
     if(query.exec()){
         success = true;
+        qDebug() << "Successful Query";
     }else{
         qWarning() << "data insertion error1: "
                << query.lastError();
@@ -57,6 +58,7 @@ bool DBManager::insertData(QSqlQuery query){
     openDB();
     if(query.exec()){
         success = true;
+        qDebug() << "Successful Query";
     }else{
         qWarning() << "data insertion error2: "
                << query.lastError();

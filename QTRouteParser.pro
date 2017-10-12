@@ -28,14 +28,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     dbmanager.cpp \
     order.cpp \
-    csvimporter.cpp
+    csvimporter.cpp \
+    excelparser.cpp
 
 HEADERS  += mainwindow.h \
     dbmanager.h \
     order.h \
-    csvimporter.h
+    csvimporter.h \
+    excelparser.h
 
 FORMS    += mainwindow.ui
+
+INCLUDEPATH += D:/Balefire/Documents/Dev/libxl-3.7.2.0/include_cpp
+LIBS += D:/Balefire/Documents/Dev/libxl-3.7.2.0/lib/libxl.lib
 
 DISTFILES += \
     Routes.db

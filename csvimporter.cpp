@@ -52,20 +52,7 @@ void CSVimporter::csvImportTester1(){
 
     qDebug() << wordList;
 
-
-
-
-
-
-
-
 }
-
-
-
-
-
-
 
 void CSVimporter::excelImportTester1(){
 
