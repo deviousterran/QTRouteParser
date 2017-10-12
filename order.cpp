@@ -83,7 +83,7 @@ QDateTime Order::getInvoiceDate() const
 void Order::setInvoiceDate(const QString &value)
 {
     QDate tempDate;
-
+    qDebug() << "WOD WOD WOD WOD WOD";
     tempDate = QDate::fromString(value,"M/d/yyyy");
     invoiceDate.setDate(tempDate);
 }

@@ -17,6 +17,8 @@ class excelparser
 public:
     excelparser();
     void testRead();
+    QDate makeDate(int day, int month, int year);
+
 
 
 };
