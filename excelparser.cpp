@@ -11,11 +11,12 @@ excelparser::excelparser()
 void excelparser::testRead(){
     libxl::Book* book = xlCreateXMLBook();
 
-    QString file = QDir::currentPath()+ "/input_headers4_DAN.xlsx";
+    QString file = QDir::currentPath()+ "/upload week 1.xlsx";
     QByteArray BAFile = file.toLocal8Bit();
     const char *cFile = BAFile.constData();
     QStringList inputReader;
     QStringListIterator inputReaderIter(inputReader);
+    int numberOfElements = 0;
 
     qDebug() << file;
     book->setKey("Andrew Demarest", "windows-2e29230504caec046ab06b6aa6s4g6uf");
@@ -26,6 +27,7 @@ void excelparser::testRead(){
         libxl::Sheet* sheet = book->getSheet(0);
         if(sheet)
         {
+            qDebug() << "this is the number of rows:" <<  sheet->lastRow();
             for(int row = sheet->firstRow(); row < sheet->lastRow(); ++row)
             {
                for(int col = sheet->firstCol(); col < sheet->lastCol(); ++col)
@@ -40,20 +42,20 @@ void excelparser::testRead(){
                    }
 
                }
-                qDebug() << inputReader.size() << "this is the string reader size";
-                foreach(QString str, inputReader){
-                    qDebug() << "value:" << str;
-                }
+                //qDebug() << inputReader.size() << "this is the string reader size";
 
-               inputReader.clear();
+                numberOfElements++;
+                //qDebug() << row;
+                inputReader.clear();
             }
         }
 
     }else{
         qDebug() << "LibXL error: " << book->errorMessage();
     }
-    book->release();
 
+    book->release();
+    qDebug() << "i read and handeled " << numberOfElements << " orders";
 
 }
 
