@@ -3,31 +3,24 @@
 
 excelparser::excelparser()
 {
-    file = QDir::currentPath()+ "/upload week 1.xlsx";
-    qDebug() << "called default constructor";
+//    filePath = QDir::currentPath()+ "/upload week 1.xlsx";
+//    qDebug() << "called default constructor";
 }
 
-excelparser::excelparser(QString filepath)
+excelparser::excelparser(QString file)
 {
-    file = filepath;
-        qDebug() << "called overloaded constructor";
+//    filePath = file;
+//        qDebug() << "called overloaded constructor";
 }
 
 
 void excelparser::testRead(){
     book = xlCreateXMLBook();
 
-    //converts the QString file path to a const char using these two lines
-    QByteArray BAFile = file.toLocal8Bit();
-    const char *cFile = BAFile.constData();
-
     QStringList inputReader;
-    QStringListIterator inputReaderIter(inputReader);
-
-    int numberOfElements = 0;
 
     book->setKey("Andrew Demarest", "windows-2e29230504caec046ab06b6aa6s4g6uf");
-
+    qDebug() << "this is the cfile value:" << cFile;
     if(book->load(cFile))
     {
         libxl::Sheet* sheet = book->getSheet(0);
@@ -68,4 +61,25 @@ void excelparser::testRead(){
 QDate excelparser::makeDate(int day, int month, int year){
     QDate temp(year,month,day);
     return temp;
+}
+
+void excelparser::setFilePath(QString file){
+    filePath = file;
+    qDebug() << "the file path is currently:" << filePath;
+    //converts the QString file path to a const char using these two lines
+    QByteArray BAFile = filePath.toLocal8Bit();
+    cFile = BAFile.constData();
+
+}
+
+QString excelparser::getFilePath(){
+    return filePath;
+}
+
+QVector<QStringList> excelparser::getResult(){
+    return restult;
+}
+void excelparser::clearResult(){
+    restult.clear();
+    restult.squeeze();
 }

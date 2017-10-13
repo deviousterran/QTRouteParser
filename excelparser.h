@@ -17,14 +17,23 @@ class excelparser
 public:
     excelparser();
     excelparser(QString filepath);
-    void testRead();
-    QDate makeDate(int day, int month, int year);
+
     libxl::Book* book;
 
-    QString file;
+
     QVector<QStringList> restult;
 
 
+    QString getFilePath();
+    void setFilePath(QString file);
+    QVector<QStringList> getResult();
+    void clearResult();
+    void testRead();
+    QDate makeDate(int day, int month, int year);
+
+private:
+    QString filePath;
+    const char *cFile;
 
 };
 
