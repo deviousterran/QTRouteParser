@@ -22,6 +22,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     void buttonPushed();
     ~MainWindow();
+    excelparser parse;
 
 public slots:
     void changeInputPath();

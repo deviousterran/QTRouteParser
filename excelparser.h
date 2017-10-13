@@ -10,7 +10,7 @@
 #include "libxl.h"
 #include <QDir>
 #include <QDebug>
-
+#include <QVector>
 
 class excelparser
 {
@@ -19,9 +19,11 @@ public:
     excelparser(QString filepath);
     void testRead();
     QDate makeDate(int day, int month, int year);
-
+    libxl::Book* book;
 
     QString file;
+    QVector<QStringList> restult;
+
 
 
 };

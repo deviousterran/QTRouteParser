@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -10,7 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::buttonPushed);
     connect(ui->inputChangeButton, &QPushButton::clicked, this, &MainWindow::changeInputPath);
 
+    parse.file = QDir::currentPath()+ "/upload week 1.xlsx";
 
+    ui->inputPathLabel->setText(parse.file);
 }
 
 void MainWindow::buttonPushed()
@@ -21,9 +25,6 @@ void MainWindow::buttonPushed()
 //    qDebug() << query;
 //    db->insertData(query);
 //    delete db;
-
-    excelparser parse = excelparser();
-    qDebug() << "have i even got this far?";
 
     parse.testRead();
 
@@ -37,14 +38,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::changeInputPath()
 {
-    QString path = QFileDialog::getOpenFileName(this,
+    parse.file = QFileDialog::getOpenFileName(this,
                                  tr("Change Input File"),
                                  QApplication::applicationDirPath(),
                                  tr("*.xlsx"));
 
-    if(!path.isEmpty())
+    if(!parse.file.isEmpty())
     {
-        ui->inputPathLabel->setText(path);
+        ui->inputPathLabel->setText(parse.file);
         //I dont ahve a settings file... yet
         //settings.setValue("filePaths/inputFilePath", path);
     }
