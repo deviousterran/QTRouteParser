@@ -26,6 +26,9 @@ void DBManager::closeDB(){
 void DBManager::createTable(){
     openDB();
     QSqlQuery query;
+    query.prepare("DROP TABLE test");
+    query.exec();
+
     query.prepare("CREATE TABLE IF NOT EXISTS test (id INTEGER PRIMARY KEY, name TEXT)");
     if(query.exec()){
     }else{

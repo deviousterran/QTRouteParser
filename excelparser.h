@@ -16,9 +16,12 @@ class excelparser
 {
 public:
     excelparser();
+    excelparser(QString filepath);
     void testRead();
     QDate makeDate(int day, int month, int year);
 
+
+    QString file;
 
 
 };

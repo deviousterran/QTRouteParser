@@ -23,6 +23,9 @@ public:
     void buttonPushed();
     ~MainWindow();
 
+public slots:
+    void changeInputPath();
+
 private:
     Ui::MainWindow *ui;
 };

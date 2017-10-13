@@ -8,24 +8,31 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButton, &QPushButton::clicked, this, &MainWindow::buttonPushed);
-
+    connect(ui->inputChangeButton, &QPushButton::clicked, this, &MainWindow::changeInputPath);
 
 
 }
 
 void MainWindow::buttonPushed()
 {
-    DBManager *db = new DBManager;
-    QString query;
-    query = "INSERT INTO test(id,name) VALUES(2,\"ANDREw Demerast\")";
-    qDebug() << query;
-    db->insertData(query);
-    delete db;
+//    DBManager *db = new DBManager;
+//    QString query;
+//    query = "INSERT INTO test(id,name) VALUES(2,\"PoopyPants\")";
+//    qDebug() << query;
+//    db->insertData(query);
+//    delete db;
 
-    excelparser *parse;
-
-
-    parse->testRead();
+    
+    
+    
+    excelparser parse = excelparser();
+    qDebug() << "have i even got this far?";
+    
+    
+    parse.file = QDir::currentPath()+ "/upload week 1.xlsx";
+    
+    ui->inputPathLabel->setText(path);
+    parse.testRead();
 
 
 }

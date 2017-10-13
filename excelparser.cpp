@@ -3,22 +3,31 @@
 
 excelparser::excelparser()
 {
-
-
-
+    file = QDir::currentPath()+ "/upload week 1.xlsx";
+    qDebug() << "called default constructor";
 }
+
+excelparser::excelparser(QString filepath)
+{
+    file = filepath;
+        qDebug() << "called overloaded constructor";
+}
+
 
 void excelparser::testRead(){
     libxl::Book* book = xlCreateXMLBook();
 
-    QString file = QDir::currentPath()+ "/upload week 1.xlsx";
+    //converts the QString file path to a const char using these two lines
     QByteArray BAFile = file.toLocal8Bit();
     const char *cFile = BAFile.constData();
+
+
     QStringList inputReader;
     QStringListIterator inputReaderIter(inputReader);
+
     int numberOfElements = 0;
 
-    qDebug() << file;
+
     book->setKey("Andrew Demarest", "windows-2e29230504caec046ab06b6aa6s4g6uf");
 
     if(book->load(cFile))
