@@ -18,7 +18,7 @@ public:
     excelparser();
     excelparser(QString filepath);
 
-    libxl::Book* book;
+    libxl::Book * book;
 
 
     QVector<QStringList> restult;
@@ -33,8 +33,8 @@ public:
 
 private:
     QString filePath;
-    const char *cFile;
-
+    const char * cFile;
+    const char tempChar;
 };
 
 #endif // EXCELPARSER_H

@@ -3,16 +3,8 @@
 
 excelparser::excelparser()
 {
-//    filePath = QDir::currentPath()+ "/upload week 1.xlsx";
-//    qDebug() << "called default constructor";
-}
 
-excelparser::excelparser(QString file)
-{
-//    filePath = file;
-//        qDebug() << "called overloaded constructor";
 }
-
 
 void excelparser::testRead(){
     book = xlCreateXMLBook();
@@ -68,8 +60,9 @@ void excelparser::setFilePath(QString file){
     qDebug() << "the file path is currently:" << filePath;
     //converts the QString file path to a const char using these two lines
     QByteArray BAFile = filePath.toLocal8Bit();
-    cFile = BAFile.constData();
-
+    tempChar = BAFile.constData();
+    cFile = &tempChar;
+        qDebug() << "this is the cfile value:" << cFile;
 }
 
 QString excelparser::getFilePath(){
