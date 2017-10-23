@@ -59,10 +59,10 @@ void excelparser::setFilePath(QString file){
     filePath = file;
     qDebug() << "the file path is currently:" << filePath;
     //converts the QString file path to a const char using these two lines
-    QByteArray BAFile = filePath.toLocal8Bit();
-    tempChar = BAFile.constData();
-    cFile = &tempChar;
-        qDebug() << "this is the cfile value:" << cFile;
+    QByteArray qb = filePath.toLatin1();
+    cFile = qb.data();
+    qDebug() << "this is the cfile value:" << cFile;
+
 }
 
 QString excelparser::getFilePath(){

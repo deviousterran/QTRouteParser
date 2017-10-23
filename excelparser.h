@@ -34,7 +34,7 @@ public:
 private:
     QString filePath;
     const char * cFile;
-    const char tempChar;
+    //const char tempChar;
 };
 
 #endif // EXCELPARSER_H
